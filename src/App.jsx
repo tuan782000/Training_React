@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    // Create an Active Page Link in Navbar
+    // Our Header 
     <BrowserRouter>
       <Header>
         <Routes>
