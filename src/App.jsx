@@ -3,6 +3,7 @@ import EditEmployee from "./components/Editemployee";
 import Employee from "./components/Employee"
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Header from "./components/header";
 
 function App() {
   // Pass a Component to Props - Rút gọn cách truyền dữ liệu đi
@@ -41,11 +42,11 @@ function App() {
   }
 
   return (
-    <>
+    <div className="App bg-gray-300 min-h-screen">
+    <Header />
       {checkEmployee ?
         <>
-
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center my-2">
             {employees.map(employee => {
               const editEmployee = (
                 <EditEmployee
@@ -73,7 +74,7 @@ function App() {
         </>
         :
         <p>You can not not see an employee</p>}
-    </>
+    </div>
   )
 }
 
