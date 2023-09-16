@@ -10,7 +10,7 @@ function App() {
     <>
       {checkEmployee ? 
         <>
-          <h1>Hello World</h1>
+          <h1 className="bg-red-300">Hello World</h1>
           {/* Cái e là nội dung người dùng gõ - đưa vào làm đối cho hàm - onChange này Call back function */}
           <input type="text" onChange={(e) => {
             console.log(e.target.value)
