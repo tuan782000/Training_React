@@ -1,4 +1,3 @@
-import EditEmployee from "./Editemployee"
 
 /* eslint-disable react/prop-types */
 const Employee = (props) => {
@@ -17,12 +16,7 @@ const Employee = (props) => {
 
         {/* <EditEmployee id={props.id} name={props.name} role={props.role} updateEmployee={props.updateEmployee} /> */}
 
-        <EditEmployee
-          id={props.id}
-          name={props.name}
-          role={props.role}
-          updateEmployee={props.updateEmployee}
-        />
+        {props.editEmployee}
       </div>
     </div>
 

@@ -1,9 +1,11 @@
 import AddEmployee from "./components/AddEmployee";
+import EditEmployee from "./components/Editemployee";
 import Employee from "./components/Employee"
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
 function App() {
-  // How to Push to State Array - Thêm dữ liệu vào mảng
+  // Pass a Component to Props - Rút gọn cách truyền dữ liệu đi
   const checkEmployee = true;
 
   const [employees, setEmployees] = useState([
@@ -20,7 +22,7 @@ function App() {
   function updateEmployee(id, newName, newRole) {
     const updatedEmployees = employees.map((employee) => {
       if (id == employee.id) {
-        return { ...employee, name: newName, role: newRole};
+        return { ...employee, name: newName, role: newRole };
       }
 
       return employee;
@@ -42,14 +44,17 @@ function App() {
     <>
       {checkEmployee ?
         <>
-          {/* <input type="text" onChange={(e) => {
-            console.log(e.target.value)
-            setRole(e.target.value)
-          }} /> */}
+
           <div className="flex flex-wrap justify-center">
-            {/* dùng hàm map để lập, để thêm id cho từng employee thì sử dụng thư viện uuidv4 */}
             {employees.map(employee => {
-              console.log(employee);
+              const editEmployee = (
+                <EditEmployee
+                  id={employee.id}
+                  name={employee.name}
+                  role={employee.role}
+                  updateEmployee={updateEmployee}
+                />
+              )
               return (
                 <Employee
                   key={employee.id}
@@ -57,7 +62,7 @@ function App() {
                   name={employee.name}
                   role={employee.role}
                   img={employee.img}
-                  updateEmployee={updateEmployee}
+                  editEmployee={editEmployee}
                 />
               );
             })}
