@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
+  { name: 'Employees', href: '/employess', current: true },
+  { name: 'Customers', href: '/customers', current: false },
   { name: 'Projects', href: '#', current: false },
   { name: 'Calendar', href: '#', current: false },
 ]
@@ -13,7 +14,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Header() {
+export default function Header(props) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -136,6 +137,9 @@ export default function Header() {
               ))}
             </div>
           </Disclosure.Panel>
+          {props.children}
+
+          <footer className='text-white text-center'>This is footer</footer>
         </>
       )}
     </Disclosure>
