@@ -8,8 +8,8 @@ import Dictionary from "./components/Dictionary";
 
 function App() {
   return (
-    // Intro to useEffect Hook - basic useEffect practice
-    // Giới thiệu useEffect Hook - luyện tập cơ bản useEffect Hook
+    // useEffect Dependency Array Explained - Giải thích về mảng phụ thuộc useEffect
+    
     <BrowserRouter>
       <Header>
         <Routes>
