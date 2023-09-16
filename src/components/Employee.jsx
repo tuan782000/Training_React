@@ -6,7 +6,7 @@ const Employee = (props) => {
     <>
       <div>Name employee is {props.name}</div>
       {/* có thể viết như này */}
-      <p>{props.role ? props.name : "No Role"}</p>
+      {/* <p>{props.role ? props.name : "No Role"}</p> */}
       {/* Hoặc */}
       {props.role ? <p className="role">{props.role}</p> : <p className="noRole">No role</p>}
     </>
