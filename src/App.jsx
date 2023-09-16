@@ -7,14 +7,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Header>
-      <BrowserRouter>
+    // Create an Active Page Link in Navbar
+    <BrowserRouter>
+      <Header>
         <Routes>
           <Route path="/employess" element={<Employees />} />
           <Route path="/customers" element={<Customer />} />
         </Routes>
-      </BrowserRouter>
-    </Header>
+      </Header>
+    </BrowserRouter>
   );
 
 }
