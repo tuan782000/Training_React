@@ -9,7 +9,7 @@ import Definition from "./pages/Definition";
 
 function App() {
   return (
-    // URL Parameters in Router -- Truyền params trên router - truyền tham số trên URL
+    // Redirect with useNavigate Hook - Điều hướng với useNavigate Hook - ví dụ có thanh tìm kiếm search xong gõ enter điều hướng đến nơi khác
 
     <BrowserRouter>
       <Header>
@@ -17,7 +17,7 @@ function App() {
           <Route path="/employess" element={<Employees />} />
           <Route path="/customers" element={<Customer />} />
           <Route path="/dictionary" element={<Dictionary />} />
-          <Route path="/definition" element={<Definition />} />
+          {/* <Route path="/definition" element={<Definition />} /> */}
           <Route path="/definition/:search" element={<Definition />} />
         </Routes>
       </Header>
