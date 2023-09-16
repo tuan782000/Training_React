@@ -1,18 +1,19 @@
 import Employee from "./components/Employee"
 function App() {
-  // Thử code logic js trong này
-  console.log("We are about to list the employee");
-  // Giải thích: cho biến lưu giá trị true or false, 
+  // Học về prop: truyền dữ liệu từ cha xuống con
+  // Bước 1: Mình sẽ xác định cha là ai và con là ai.
+  // Bước 2: đặt con props ngay lúc khai hàm ban đầu của component đó
+  // Bước 3: từ cha truyền xuống dữ liệu cho con
+  // Bước 4: Quay lại con hiển thị thông tin đó ra props.ten_da_truyen_tu_cha
   const checkEmployee = true;
   return (
-    // dùng toán tử 3 ngôi check nếu true thì in ra nguyên cụm fragments <></> còn false in ra <p>
     <>
       {checkEmployee ? 
         <>
           <h1>Hello World</h1>
-          <Employee />
-          <Employee />
-          <Employee />
+          <Employee name="Tuan" role="Manager"/>
+          <Employee name="Nguyen"  role="Intern"/>
+          <Employee name="Thai" />
         </> 
         : 
         <p>You can not not see an employee</p>}
