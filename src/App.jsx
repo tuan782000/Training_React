@@ -9,7 +9,7 @@ import Definition from "./pages/Definition";
 
 function App() {
   return (
-    // useEffect Dependency Array Explained - Giải thích về mảng phụ thuộc useEffect
+    // URL Parameters in Router -- Truyền params trên router - truyền tham số trên URL
 
     <BrowserRouter>
       <Header>
@@ -18,6 +18,7 @@ function App() {
           <Route path="/customers" element={<Customer />} />
           <Route path="/dictionary" element={<Dictionary />} />
           <Route path="/definition" element={<Definition />} />
+          <Route path="/definition/:search" element={<Definition />} />
         </Routes>
       </Header>
     </BrowserRouter>
