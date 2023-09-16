@@ -1,8 +1,9 @@
+import AddEmployee from "./components/AddEmployee";
 import Employee from "./components/Employee"
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 function App() {
-  // Update Parent Component State in Child Component  - Cập nhật state component cha bằng component child
-  // Nguyên lý dùng callback
+  // How to Push to State Array - Thêm dữ liệu vào mảng
   const checkEmployee = true;
 
   const [employees, setEmployees] = useState([
@@ -16,27 +17,25 @@ function App() {
     { id: 8, name: "Nhi", role: "Accountant", img: "https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg" },
   ]);
 
-  // function updateEmployee(id, newName, newRole) {
-  //   const updateEmployees = employees.map((employee) => {
-  //     if(id === employee.id){
-  //       // retrun new
-
-  //       return {...employee, name: newName, role: newRole}
-  //     }
-  //     return employee
-  //   });
-  //   setEmployees(updateEmployees);
-  // }
-
   function updateEmployee(id, newName, newRole) {
     const updatedEmployees = employees.map((employee) => {
       if (id == employee.id) {
-        return { ...employee, name: newName, role: newRole };
+        return { ...employee, name: newName, role: newRole};
       }
 
       return employee;
     });
     setEmployees(updatedEmployees);
+  }
+
+  function newEmployee(name, role, img) {
+    const newEmployee = {
+      id: uuidv4(),
+      name: name,
+      role: role,
+      img: img,
+    };
+    setEmployees([...employees, newEmployee]);
   }
 
   return (
@@ -63,6 +62,9 @@ function App() {
               );
             })}
           </div>
+
+          <AddEmployee newEmployee={newEmployee} />
+
         </>
         :
         <p>You can not not see an employee</p>}
