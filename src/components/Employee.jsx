@@ -15,7 +15,14 @@ const Employee = (props) => {
           </p>
         </div>
 
-        <EditEmployee name={props.name} role={props.role} />
+        {/* <EditEmployee id={props.id} name={props.name} role={props.role} updateEmployee={props.updateEmployee} /> */}
+
+        <EditEmployee
+          id={props.id}
+          name={props.name}
+          role={props.role}
+          updateEmployee={props.updateEmployee}
+        />
       </div>
     </div>
 
