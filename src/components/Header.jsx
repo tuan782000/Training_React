@@ -8,7 +8,7 @@ const navigation = [
     { name: 'Employees', href: '/employess' },
     { name: 'Customers', href: '/customers' },
     { name: 'Dictionary', href: '/dictionary' },
-    { name: 'Definition', href: '/definition' },
+    // { name: 'Definition', href: '/definition' },
 ]
 
 // function classNames(...classes) {
