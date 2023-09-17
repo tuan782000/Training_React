@@ -1,28 +1,48 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-// useNavigate của react-router-dom
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import NotFound from '../components/NotFound';
 
 export default function Definition() {
+    // Sử dụng cả 2 cách điều hướng lỗi
+    // useState
+    // useNavigate
     const [word, setWord] = useState();
-    // Cách 1: sử dụng navigate
-    // const navigate = useNavigate();
-    // Cách 2: sử dụng useState kèm với option Link
+    const navigate = useNavigate();
+
     const [notFound, setNotFound] = useState(false);
+
+    const [error, setError] = useState(false);
+
     console.log(useParams());
     let { search } = useParams();
 
     useEffect(() => {
-        fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + search)
+        // const url = 'https://ádljdsksldfkefdlsmcalsk.com';
+        // Các lỗi server đầu mã thường là 500
+        // const url = 'https://httpstat.us/500';
+        // const url = 'https://httpstat.us/501'; 
+        //...
+        // Các lỗi phía máy khách client
+        // Đầu 400
+        // const url = 'https://httpstat.us/404'; ... 
+        const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + search;
+        fetch(url)
             .then((response) => {
-                // log ra trạng thái sau khi gọi api
                 console.log(response.status);
 
-                // Kiểm tra nếu 404 điều hướng tới trang khác
                 if (response.status === 404) {
-                    // navigate('/404');
                     setNotFound(true);
+                } else if (response.status === 401) {
+                    navigate('/login');
+                } else if (response.status === 500){
+                    setError(true);
+                }
+
+                // Nếu các lỗi không xác định ném vào đây
+                if(!response.ok) {
+                    setError (true);
+                    throw new Error("Some thing went wrong");
                 }
 
                 return response.json()
@@ -30,6 +50,9 @@ export default function Definition() {
             .then((data) => {
                 setWord(data[0].meanings);
                 // console.log(data[0].meanings);
+            })
+            .catch((e) => {
+                console.log(e.message);
             });
     }, []);
 
@@ -37,6 +60,14 @@ export default function Definition() {
         return (
             <>
                 <NotFound />
+                <Link to="/dictionary">Search another</Link>
+            </>
+        )
+    }
+    if(error === true) {
+        return (
+            <>
+                <p>Some thing went wrong, Try again?</p>
                 <Link to="/dictionary">Search another</Link>
             </>
         )
